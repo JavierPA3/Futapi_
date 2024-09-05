@@ -1,0 +1,20 @@
+<div class="container">
+
+    <h2>Contacto</h2>
+    <p>Si tienes alguna pregunta, sugerencia o incidencia, no dudes en ponerte en contacto con nosotros. Estaremos
+        encantados de ayudarte.</p>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <label for="email">Email:</label>
+        <input id="email" type="email" formControlName="email" />
+        <label for="message">Asunto:</label>
+        <input id="message" type="text" formControlName="message" />
+        <button type="submit">Enviar</button>
+        <p>{{statusMessage}}</p>
+    </form>
+    <h3>Acerca de </h3>
+    <p>Al proporcionarnos su dirección de correo electrónico, usted acepta compartirla tanto con nosotros como con
+        formspree.io, lo cual nos permite recibir sus consultas y mantenernos informados sobre vuestras opiniones y
+        feedback. Aseguramos que su información será manejada con la máxima confidencialidad y utilizada exclusivamente
+        para los fines mencionados.</p>
+
+</div>

@@ -1,0 +1,14 @@
+<div class="main-form">
+    <form class="form-container">
+        <div *ngFor="let field of fields">
+            <label>{{ field.label }}
+                <input *ngIf="getInputType(field.type) != 'select'" [id]="field.name" [type]="getInputType(field.type)" [min]="field.min" [max]="field.max"
+                    [disabled]="field.disabled" [(ngModel)]="field.value" [name]="field.name"
+                    (input)="convertToNumber(field)" />
+                <select *ngIf="getInputType(field.type) == 'select'" [id]="field.name" [disabled]="field.disabled" [(ngModel)]="field.value" [name]="field.name">
+                    <option *ngFor="let option of field.options" [value]="option.value" >{{ option.description }}</option>
+                </select>
+            </label>
+        </div>
+    </form>
+</div>

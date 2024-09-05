@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="selecciona">
+
+        <div class="title">
+            <h2>Predice la posición de un jugador</h2>
+            <p> Predice la posición de un jugador en base a sus estadísticas</p>
+            <p>Porcentaje de acierto: 91%</p>
+            <p>Parámetros usados para la predicción:</p>
+
+            <p>
+                <strong>n_estimators</strong>: Número de árboles en el bosque (100). (Hemos utilizado este valor ya que
+                es el que mejor resultado nos ha dado).
+            </p>
+            <p>
+                <strong>criterion</strong>: La función para medir la calidad de una división ("gini") (Hemos utilizado
+                este valor ya que es el que mejor resultado nos ha dado).
+            </p>
+            <p>
+                <strong>max_depth</strong>: Profundidad máxima de los árboles de decisión (None) (Hemos utilizado este
+                valor ya que es el que mejor resultado nos ha dado).
+            </p>
+            <p>
+                <strong>min_samples_split</strong>: Número mínimo de muestras requeridas para dividir un nodo interno
+                (2) (Hemos utilizado este valor ya que es el que mejor resultado nos ha dado).
+            </p>
+            <p>
+                <strong>min_samples_leaf</strong>: Número mínimo de muestras requeridas para estar en un nodo hoja (1)
+                (Hemos utilizado este valor ya que es el que mejor resultado nos ha dado).
+            </p>
+            <p>
+                <strong>max_features</strong>: Número de características a considerar cuando se busca la mejor división
+                ("auto") (Hemos utilizado este valor ya que es el que mejor resultado nos ha dado).
+            </p>
+            <p>
+                <strong>bootstrap</strong>: Indica si se debe utilizar el método de remuestreo bootstrap (True) (Hemos
+                utilizado este valor ya que es el que mejor resultado nos ha dado).
+            </p>
+
+        </div>
+        <div class="text-options">
+            <span *ngIf="!posicion">Puedes seleccionar a un jugador como base de las estadísticas </span>
+
+            <select *ngIf="!posicion" class="jugadores" [(ngModel)]="selectedPlayerRk">
+                <option class="jugador" *ngFor="let player of players" [value]="player.Rk">
+                    {{player.Player}} ({{player.Squad}})
+                </option>
+            </select>
+            <div class="buttons">
+                <button *ngIf="!posicion" class="btn btn-primary"
+                    (click)="pickPlayer(selectedPlayerRk)">Seleccionar</button>
+                <button *ngIf="!posicion" class="btn btn-primary" (click)="sendForm()">Predecir</button>
+                <button *ngIf="posicion" class="btn btn-primary" (click)="resetForm()">Volver</button>
+            </div>
+        </div>
+
+        <div *ngIf="posicion" class="prediccion">
+
+            <div [ngSwitch]="posicion">
+
+                <div *ngSwitchCase="'Portero'" class="posicion-predecida">
+                    <img src="../../../assets/imgs/portero.png" alt="Silueta del portero">
+                    <h3>{{posicion}}</h3>
+                </div>
+
+                <div *ngSwitchCase="'Defensa'" class="posicion-predecida">
+                    <img src="../../../assets/imgs/defensa.png" alt="Silueta del defensa">
+                    <h3>{{posicion}}</h3>
+                </div>
+
+                <div *ngSwitchCase="'Mediocampista'" class="posicion-predecida">
+                    <img src="../../../assets/imgs/centrocampista.png" alt="Silueta del mediocampista">
+                    <h3>{{posicion}}</h3>
+                </div>
+
+                <div *ngSwitchCase="'Delantero'" class="posicion-predecida">
+                    <img src="../../../assets/imgs/delantero.png" alt="Silueta del delantero">
+                    <h3>{{posicion}}</h3>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div *ngIf="!posicion">
+            <h3>Rellena cada campo</h3>
+            <app-formulario [fields]="form"></app-formulario>
+        </div>
+
+    </div>
+</div>

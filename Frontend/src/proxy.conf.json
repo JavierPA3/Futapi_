@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://futapi.iesgrancapitan.org",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="selecciona">
+
+        <div class="title">
+            <h2>Predice jugadores similares a otro</h2>
+            <p>Predice jugadores similares a otro en base a sus estadísticas mediante KMeans</p>
+            <p>Porcentaje de acierto: 86%</p>
+            <p>Parámetros usados para la predicción:</p>
+            <p> <strong>KMeans(n_clusters=k)</strong>: Crea un objeto KMeans para agrupar datos en k grupos</p>
+            <p> <strong>n_clusters</strong>: El número de grupos a generar</p>
+            <p> <strong> init</strong>: Método de inicialización de centroides ('k-means') (Hemos utilizado este valor ya que es el que mejor resultado nos ha dado).</p>
+            <p><strong>n_init</strong>: Número de veces que se ejecutará el algoritmo con diferentes centroides iniciales (10)  (Hemos utilizado este valor ya que es el que mejor resultado nos ha dado).</p>
+            <p><strong>max_iter</strong>: Número máximo de iteraciones para cada ejecución (300) (Hemos utilizado este valor ya que es el que mejor resultado nos ha dado).</p>
+            <p><strong>tol</strong>: Tolerancia para declarar convergencia (1e-4) (Hemos utilizado este valor ya que es el que mejor resultado nos ha dado).</p>
+            <p><strong>random_state</strong>: Semilla utilizada por el generador de números aleatorios (None) (Hemos utilizado este valor ya que es el que mejor resultado nos ha dado).</p>
+        </div>
+        <div class="text-options">
+            <span *ngIf="jugadores.length == 0">Puedes seleccionar a un jugador como base de las estadísticas </span>
+
+            <select *ngIf="jugadores.length == 0" class="jugadores" [(ngModel)]="selectedPlayerRk">
+                <option class="jugador" *ngFor="let player of players" [value]="player.Rk">
+                    {{player.Player}} ({{player.Squad}})
+                </option>
+            </select>
+            <div class="buttons">
+                <button *ngIf="jugadores.length == 0" class="btn btn-primary"
+                    (click)="pickPlayer(selectedPlayerRk)">Seleccionar</button>
+                <button *ngIf="jugadores.length == 0" class="btn btn-primary" (click)="sendForm()">Predecir </button>
+                <button *ngIf="jugadores.length >= 1" class="btn btn-primary" (click)="resetForm()">Volver</button>
+            </div>
+        </div>
+        <div *ngIf="jugadores.length >= 1" class="prediccion">
+            <label for="numeroJugadores">Selecciona el número de jugadores:</label>
+            <select id="numeroJugadores" [(ngModel)]="cantidadJugadores">
+                <option value="5">5 jugadores</option>
+                <option value="10">10 jugadores</option>
+                <option value="15">15 jugadores</option>
+                <option value="20">20 jugadores</option>
+            </select>
+            <br/>
+            <ol>
+                <li *ngFor="let jugador of jugadores | slice:0:cantidadJugadores; let i = index">{{ i + 1 }}. {{ jugador }}</li>
+            </ol>
+        </div>
+        
+        
+
+
+        <div *ngIf="jugadores.length == 0">
+            <h3>Rellena cada campo</h3>
+            <app-formulario [fields]="form"></app-formulario>
+        </div>
+
+    </div>
+</div>

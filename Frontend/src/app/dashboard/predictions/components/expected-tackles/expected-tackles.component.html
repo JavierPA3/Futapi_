@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="selecciona">
+
+        <div class="title">
+            <h2>Predicción de entradas</h2>
+            <p>Predice las entradas esperadas de un jugador en base a sus estadísticas mediante Linear Regression</p>
+            <p>Parámetros usados para la predicción:</p>
+            <p>Porcentaje de acierto: 99%
+                Error cuadrático: 2.22*10^-8
+             </p>
+            <p><strong>fit_intercept=True</strong>: Calcula la ordenada al origen. (Hemos utilizado este valor ya que es
+                el que mejor resultado nos ha dado).</p>
+            <p>
+                <strong>normalize='deprecated'</strong>: Normaliza las variables explicativas (0.24). (Hemos utilizado
+                este valor ya que es el que mejor resultado nos ha dado).
+            </p>
+            <p>
+                <strong>copy_X=True</strong>: Realiza una copia de X. (Hemos utilizado este valor ya que es el que mejor
+                resultado nos ha dado).
+            </p>
+            <p>
+                <strong>n_jobs=None</strong>: Número de CPUs a usar (None significa 1, -1 usa todas las CPUs
+                disponibles). (Hemos utilizado este valor ya que es el que mejor resultado nos ha dado).
+            </p>
+            <p>
+                <strong>positive=False</strong>: Restringe los coeficientes para que sean positivos. (Hemos utilizado
+                este valor ya que es el que mejor resultado nos ha dado).
+            </p>
+        </div>
+
+        <div class="text-options">
+            <span *ngIf="!tackles">Puedes seleccionar a un jugador como base de las estadísticas </span>
+
+            <select *ngIf="!tackles" class="jugadores" [(ngModel)]="selectedPlayerRk">
+                <option class="jugador" *ngFor="let player of players" [value]="player.Rk">
+                    {{player.Player}} ({{player.Squad}})
+                </option>
+            </select>
+            <div class="buttons">
+                <button *ngIf="!tackles" class="btn btn-primary"
+                    (click)="pickPlayer(selectedPlayerRk)">Seleccionar</button>
+                <button *ngIf="!tackles" class="btn" (click)="sendForm()">Predecir </button>
+                <button *ngIf="tackles" class="btn" (click)="resetForm()">Volver</button>
+            </div>
+        </div>
+
+        <div *ngIf="tackles" class="prediccion">
+            <div class="prediccion" *ngIf="tackles<=0">
+                <h3>Entradas esperadas: 0.0 entradas/partido </h3>
+            </div>
+            <div class="prediccion" *ngIf="tackles>0">
+                <h3>Entradas esperadas: {{ mostrarTackles }} entradas/partido</h3>
+            </div>
+            <img src="../../../assets/imgs/pepe-casquero.gif" alt="Entradas">
+
+
+
+        </div>
+
+        <div *ngIf="!tackles">
+            <h3>Rellena cada campo</h3>
+            <app-formulario [fields]="form"></app-formulario>
+        </div>
+
+    </div>
+</div>

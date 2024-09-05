@@ -1,0 +1,37 @@
+/* Vista de teléfono */
+*{
+    background-color: #ffffff;
+}
+.fullscreen {
+    display: flex;
+    justify-content: center;
+}
+.main {
+    width: 90%;
+    padding: 3%;
+
+}
+.content{
+    background-color: #ffffff;
+    height: 100vh;
+}
+/* Vista de tablet */
+@media (min-width: 768px) and (max-width: 1199px) {}
+
+/* Vista de ordenador */
+@media (min-width: 1200px) {
+
+    .fullscreen {
+        display: flex;
+        justify-content: center;
+    }
+
+    .side-menu {
+        width: 15%;
+    }
+
+    .main {
+        width: 80%;
+
+    }
+}

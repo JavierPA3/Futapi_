@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="selecciona">
+
+        <div class="title">
+            <h2>Predicción de ACG</h2>
+            <p>Predice las Acciones de Creacción de Gol esperados de un jugador en base a sus estadísticas mediante Linear
+                Regression </p>
+                <p>Porcentaje de acierto: 99%
+                    Error cuadrático: 2.22*10^-5 
+                 </p>
+                <p>Parámetros usados para la predicción:</p>
+                <p><strong>fit_intercept=True</strong>: Calcula la ordenada al origen. (Hemos utilizado este valor ya que es
+                    el que mejor resultado nos ha dado).</p>
+                <p>
+                    <strong>normalize='deprecated'</strong>: Normaliza las variables explicativas (0.24). (Hemos utilizado
+                    este valor ya que es el que mejor resultado nos ha dado).
+                </p>
+                <p>
+                    <strong>copy_X=True</strong>: Realiza una copia de X. (Hemos utilizado este valor ya que es el que mejor
+                    resultado nos ha dado).
+                </p>
+                <p>
+                    <strong>n_jobs=None</strong>: Número de CPUs a usar (None significa 1, -1 usa todas las CPUs
+                    disponibles). (Hemos utilizado este valor ya que es el que mejor resultado nos ha dado).
+                </p>
+                <p>
+                    <strong>positive=False</strong>: Restringe los coeficientes para que sean positivos. (Hemos utilizado
+                    este valor ya que es el que mejor resultado nos ha dado).
+                </p>
+        </div>
+
+        <div class="text-options">
+            <span *ngIf="!gca">Puedes seleccionar a un jugador como base de las estadísticas </span>
+
+            <select *ngIf="!gca" class="jugadores" [(ngModel)]="selectedPlayerRk">
+                <option class="jugador" *ngFor="let player of players" [value]="player.Rk">
+                    {{player.Player}} ({{player.Squad}})
+                </option>
+            </select>
+            <div class="buttons">
+                <button *ngIf="!gca" class="btn btn-primary" (click)="pickPlayer(selectedPlayerRk)">Seleccionar</button>
+                <button *ngIf="!gca" class="btn btn" (click)="sendForm()">Predecir </button>
+                <button *ngIf="gca" class="btn" (click)="resetForm()">Volver</button>
+            </div>
+        </div>
+
+        <div *ngIf="gca" class="prediccion">
+            <div class="prediccion" *ngIf="gca<=0">
+                <h3>ACG esperadas: 0.0 ACG/partido </h3>
+            </div>
+            <div class="prediccion" *ngIf="gca>0">
+                <h3>ACG esperadas: {{ mostrarGCA }} ACG/partido</h3>
+            </div>
+            <img src="../../../assets/imgs/Messi.gif" alt="Silueta del Balón">
+
+              
+
+        </div>
+
+        <div *ngIf="!gca">
+            <h3>Rellena cada campo</h3>
+            <app-formulario [fields]="form"></app-formulario>
+        </div>
+
+    </div>
+</div>

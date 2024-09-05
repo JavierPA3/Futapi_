@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="selecciona">
+
+        <div class="title">
+            <h2>Predición de las asistencias</h2>
+            <p>Predice las asistencias esperadas de un jugador en base a sus estadísticas mediante RandomForest</p>
+            <p>Porcentaje de acierto: 92%
+               Error cuadrático: 0.11 
+            </p>
+            <p>Parámetros usados para la predicción:</p>
+                <p><strong>n_estimators</strong>: Número de árboles en el bosque. (Hemos utilizado el valor 100 ya que es el que mejor resultado nos ha dado.) </p>
+                <p><strong>random_state</strong>: Semilla utilizada por el generador de números aleatorios para asegurar la reproducibilidad
+                    de los resultados: (Hemos utilizado el valor 42 ya que es el que mejor resultado nos ha dado.)</p>
+        </div>
+
+        <div class="text-options">
+            <span *ngIf="!xAssist">Puedes seleccionar a un jugador como base de las estadísticas </span>
+
+            <select *ngIf="!xAssist" class="jugadores" [(ngModel)]="selectedPlayerRk">
+                <option class="jugador" *ngFor="let player of players" [value]="player.Rk">
+                    {{player.Player}} ({{player.Squad}})
+                </option>
+            </select>
+            <div class="buttons">
+                <button *ngIf="!xAssist" class="btn btn-primary"
+                    (click)="pickPlayer(selectedPlayerRk)">Seleccionar</button>
+                <button *ngIf="!xAssist" class="btn" (click)="sendForm()">Predecir </button>
+                <button *ngIf="xAssist" class="btn" (click)="resetForm()">Volver</button>
+            </div>
+        </div>
+
+        <div *ngIf="xAssist" class="prediccion">
+            <div class="prediccion" *ngIf="xAssist<=0">
+                <h3>Asistencias esperadas: 0.0 asistencias </h3>
+            </div>
+            <div class="prediccion" *ngIf="xAssist>0">
+                <h3>Asistencias esperadas: {{ (+mostrarxAssists) * 2}} asistencias</h3>
+            </div>
+            <img src="../../../assets/imgs/assist-joao-cancelo.gif" alt="Gol">
+
+
+
+        </div>
+
+        <div *ngIf="!xAssist">
+            <h3>Rellena cada campo</h3>
+            <app-formulario [fields]="form"></app-formulario>
+        </div>
+
+    </div>
+</div>

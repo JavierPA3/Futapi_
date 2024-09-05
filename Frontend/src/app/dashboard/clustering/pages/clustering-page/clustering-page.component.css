@@ -1,0 +1,49 @@
+* {
+    padding: 1%;
+    color: #000000;
+
+}
+
+h2 {
+
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+h2,
+h3,
+h4 {
+    font-family: Monserat;
+    font-weight: bold;
+}
+
+h4,
+p {
+    margin-bottom: 5%;
+}
+
+section {
+    padding: 3%;
+    text-align: justify;
+
+
+}
+
+/* vista ordenador */
+@media only screen and (min-width: 1200px) {
+    h2 {
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 1.25vw;
+    }
+
+    p {
+        font-size: 1vw;
+    }
+
+    h4 {
+        font-size: 1.15vw
+    }
+}

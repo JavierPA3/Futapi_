@@ -1,0 +1,51 @@
+<div class="logo_nav">
+    <img src="../../../assets/imgs/iconotopmenu.png" alt="Icono Futapi">
+    <nav>
+        <ul class="list-group">
+            <li class="list-items" *ngFor="let link of topMainMenu" [routerLink]="link.route" routerLinkActive="active">
+                {{link.title}}
+            </li>
+        </ul>
+        <ul class="list-group">
+            <li class="list-items" *ngFor="let link of sideMainMenu" [routerLink]="link.route" routerLinkActive="active">
+                {{link.title}}
+            </li>
+        </ul>
+    </nav>
+    
+</div>
+    
+    <div class="subcategorias">
+
+        <div class="ejemplos" *ngIf="showExamplesClasification">
+
+            <ul class="list-group">
+                <li class="list-items" *ngFor="let link of clasificationMenu" [routerLink]="link.route"
+                routerLinkActive="active">
+                    {{link.title}}
+                </li>
+            </ul>
+        </div>
+        
+        <div class="ejemplos" *ngIf="showExamplesPrediction">
+            
+            <ul class="list-group">
+                <li class="list-items" *ngFor="let link of predictionsMenu" [routerLink]="link.route"
+                routerLinkActive="active">
+                {{link.title}}
+            </li>
+        </ul>
+    </div>
+
+        <div class="ejemplos" *ngIf="showExamplesClustering">
+
+            <ul class="list-group">
+                <li class="list-items" *ngFor="let link of clusteringMenu" [routerLink]="link.route"
+                    routerLinkActive="active">
+                    {{link.title}}
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    

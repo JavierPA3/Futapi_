@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="selecciona">
+
+        <div class="title">
+            <h2>Predicción de regates</h2>
+            <p>Predice los regates completados esperados de un jugador en base a sus estadísticas mediante Linear
+                Regression</p>
+            <p>Porcentaje de acierto: 85%
+                Error cuadrático: 0.11
+            </p>
+            <p>Parámetros usados para la predicción:</p>
+            <p><strong>fit_intercept=True</strong>: Calcula la ordenada al origen. (Hemos utilizado este valor ya que es
+                el que mejor resultado nos ha dado).</p>
+            <p>
+                <strong>normalize='deprecated'</strong>: Normaliza las variables explicativas (0.24). (Hemos utilizado
+                este valor ya que es el que mejor resultado nos ha dado).
+            </p>
+            <p>
+                <strong>copy_X=True</strong>: Realiza una copia de X. (Hemos utilizado este valor ya que es el que mejor
+                resultado nos ha dado).
+            </p>
+            <p>
+                <strong>n_jobs=None</strong>: Número de CPUs a usar (None significa 1, -1 usa todas las CPUs
+                disponibles). (Hemos utilizado este valor ya que es el que mejor resultado nos ha dado).
+            </p>
+            <p>
+                <strong>positive=False</strong>: Restringe los coeficientes para que sean positivos. (Hemos utilizado
+                este valor ya que es el que mejor resultado nos ha dado).
+            </p>
+        </div>
+
+        <div class="text-options">
+            <span *ngIf="!driblesSuc">Puedes seleccionar a un jugador como base de las estadísticas </span>
+
+            <select *ngIf="!driblesSuc" class="jugadores" [(ngModel)]="selectedPlayerRk">
+                <option class="jugador" *ngFor="let player of players" [value]="player.Rk">
+                    {{player.Player}} ({{player.Squad}})
+                </option>
+            </select>
+            <div class="buttons">
+                <button *ngIf="!driblesSuc" class="btn btn-primary"
+                    (click)="pickPlayer(selectedPlayerRk)">Seleccionar</button>
+                <button *ngIf="!driblesSuc" class="btn btn" (click)="sendForm()">Predecir </button>
+                <button *ngIf="driblesSuc" class="btn btn" (click)="resetForm()">Volver</button>
+            </div>
+        </div>
+
+        <div *ngIf="driblesSuc" class="prediccion">
+            <div class="prediccion" *ngIf="driblesSuc<=0">
+                <h3>Regates esperados: 0.0 regates/partido. </h3>
+            </div>
+            <div class="prediccion" *ngIf="driblesSuc>0">
+                <h3>Regates esperados: {{ mostrardriblesSuc }} regates/partido.</h3>
+            </div>
+            <img src="../../../assets/imgs/Cr7gif.gif" alt="Regate de Cristiano Ronaldo">
+
+
+
+        </div>
+
+        <div *ngIf="!driblesSuc">
+            <h3>Rellena cada campo</h3>
+            <app-formulario [fields]="form"></app-formulario>
+        </div>
+
+    </div>
+</div>

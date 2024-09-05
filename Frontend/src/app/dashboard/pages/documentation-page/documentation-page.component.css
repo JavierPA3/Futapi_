@@ -1,0 +1,158 @@
+* {
+    padding: 1%;
+    color: #000000;
+    text-align: left;
+
+}
+
+.container {
+    text-align: center;
+}
+
+img {
+    width: 25vw;
+    padding: 1%;
+    display: block;
+    margin: 0 auto;
+}
+
+h2 {
+
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+h2,
+h3 {
+    font-family: Monserat;
+    font-weight: bold;
+}
+h3, p{
+    margin-bottom: 5%;
+}
+
+img {
+    width: 18vw;
+    padding: 1%;
+    display: block;
+    margin: auto;
+    border-radius: 15px;
+}
+nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 3%;
+    justify-items: center;
+
+}
+a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    border: 3px solid #9c843d;
+    color: #9c843d;
+    font-weight: bold;
+    background-color: #eae2c9;
+    border-radius: 50px;
+    margin: 1%;
+    width: 25vw;
+    height: 8vw;
+    font-size: 3vw;
+}
+@media (min-width: 768px) and (max-width: 999px) {
+
+    a {
+        width: 20vw;
+        height: 5vw;
+        font-size: 2vw;
+    }
+
+}
+
+@media (min-width: 999px) and (max-width: 1199px) {
+
+    a{
+        width: 15vw;
+        height: 4.75vw;
+        font-size: 1.5vw;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .title h2 {
+        text-align: center;
+        font-size: 2.5vw
+    }
+
+    p {
+        font-size: 1vw;
+    }
+
+    span {
+        font-size: 1.5vw;
+    }
+
+    .btn {
+        font-size: 1.5vw;
+        width: 10vw;
+        height: 2.5vw;
+    }
+
+    .container {
+        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+    }
+
+    img {
+        width: 18vw;
+        padding: 1%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    select {
+        width: 50%;
+    }
+
+    li {
+        font-size: 1vw;
+        text-decoration: underline;
+    }
+
+    img {
+        width: 15vw;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        text-align: center;
+        border: 3px solid #9c843d;
+        color: #9c843d;
+        font-weight: bold;
+        background-color: #eae2c9;
+        border-radius: 50px;
+        margin: 1%;
+        width: 8vw;
+        height: 3.45vw;
+        font-size: 0.75vw;
+    }
+    nav{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        padding: 3%;
+
+    }
+}

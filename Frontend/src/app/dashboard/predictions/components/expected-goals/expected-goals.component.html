@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="selecciona">
+
+        <div class="title">
+            <h2>Predicción de goles</h2>
+            <p>Predice los goles esperados de un jugador en base a sus estadísticas mediante RandomForest con los
+                siguientes parámetros:</p>
+                <p>Porcentaje de acierto: 94%
+                    Error cuadrático: 0.22
+                 </p>
+            <p>Parámetros usados para la predicción:</p>
+            <p><strong>n_estimators</strong>: Número de árboles en el bosque. (Hemos utilizado el valor 100 ya que es el que mejor resultado nos ha dado.) </p>
+            <p><strong>random_state</strong>: Semilla utilizada por el generador de números aleatorios para asegurar la reproducibilidad
+                de los resultados: (Hemos utilizado el valor 42 ya que es el que mejor resultado nos ha dado.)</p>
+        </div>
+
+        <div class="text-options">
+            <span *ngIf="!xGoals">Puedes seleccionar a un jugador como base de las estadísticas: </span>
+
+            <select *ngIf="!xGoals" class="jugadores" [(ngModel)]="selectedPlayerRk">
+                <option class="jugador" *ngFor="let player of players" [value]="player.Rk">
+                    {{player.Player}} ({{player.Squad}})
+                </option>
+            </select>
+            <div class="buttons">
+                <button *ngIf="!xGoals" class="btn" (click)="pickPlayer(selectedPlayerRk)">Seleccionar</button>
+                <button *ngIf="!xGoals" class="btn" (click)="sendForm()">Predecir </button>
+                <button *ngIf="xGoals" class="btn" (click)="resetForm()">Volver</button>
+            </div>
+        </div>
+
+        <div *ngIf="xGoals" class="prediccion">
+            <div class="prediccion" *ngIf="xGoals<=0">
+                <h3>Goles esperados: 0.0 goles </h3>
+            </div>
+            <div class="prediccion" *ngIf="xGoals>0">
+                <h3>Goles esperados: {{ mostrarXGoals }} goles</h3>
+            </div>
+            <img src="../../../assets/imgs/IniestaDeMiVida.gif" alt="Gol">
+
+
+
+        </div>
+
+        <div *ngIf="!xGoals">
+            <h3>Rellena cada campo</h3>
+            <app-formulario [fields]="form"></app-formulario>
+        </div>
+
+    </div>
+</div>
